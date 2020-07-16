@@ -35,7 +35,6 @@
 .menu.show {
   visibility: visible;
 }
-.menu-img,
 .menu-nav {
   background: #373737;
   display: flex;
@@ -43,7 +42,6 @@
   align-items: center;
   justify-content: center;
   float: left;
-  width: 50%;
   height: 100vh;
   overflow: hidden;
 }
@@ -57,19 +55,6 @@
 }
 .menu-nav.show {
   transform: translate3d(0, 0, 0);
-}
-.menu-img {
-  transform: translate3d(-100%, 0, 0);
-  transition: all 0.5s ease-out;
-}
-.menu-img.show {
-  transform: translate3d(0, 0, 0);
-}
-.menu-img .portrait {
-  width: 250px;
-  height: 250px;
-  background: url("../img/portrait.jpg");
-  border-radius: 50%;
 }
 .menu .nav-item {
   transform: translate3d(600px, 0, 0);
@@ -115,7 +100,7 @@
 @media screen and (max-width: 900px) {
   main .lg-heading {
     line-height: 0.7;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     padding-top: 3rem;
   }
   main .lg-heading #first-name {
@@ -124,34 +109,27 @@
   main .lg-heading #last-name {
     font-size: 5rem;
   }
+  main .lg-sub-heading {
+    margin-bottom: 3rem;
+  }
   main .main-img {
+    margin-top: 5rem;
     height: 350px;
     width: 350px;
   }
   .menu {
     opacity: 1;
   }
-  ul.menu-nav,
-  div.menu-img {
+  ul.menu-nav {
     float: none;
     width: 100%;
     min-height: 0;
   }
-  ul.menu-nav.show,
-  div.menu-img.show {
+  ul.menu-nav.show {
     transform: translate3d(0, 0, 0);
   }
   .menu-nav {
-    height: 65vh;
     font-size: 24px;
-  }
-  .menu-img {
-    height: 35vh;
-  }
-  .menu-img .portrait {
-    background: url("../img/portrait_sm.jpg");
-    width: 150px;
-    height: 150px;
   }
 }
 
@@ -166,9 +144,8 @@
     font-size: 3rem;
   }
   main .main-img {
-    margin-top: 3rem;
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
   }
 }
 
@@ -181,7 +158,7 @@ body {
   color: #fff;
   margin: 0;
   height: 100%;
-  font-family: "Cardo", Georgia, Serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
 }
 
@@ -199,7 +176,7 @@ h3.lg-heading {
 h1.sm-heading,
 h2.sm-heading,
 h3.sm-heading {
-  margin-bottom: 1rem;
+  margin: 3rem 0 1rem 0;
   padding: 0 1rem;
 }
 
@@ -234,13 +211,11 @@ main .icons a:hover {
 }
 main#home {
   overflow: hidden;
-  align-items: center;
   text-align: center;
 }
 main#home .main-img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   border-radius: 50%;
 }
 
@@ -275,6 +250,7 @@ main#home .main-img {
 }
 
 .blurb {
-  background: blue;
-  border: black solid 3px;
+  border: black solid 1px;
+  background: #515151;
+  padding: 1rem;
 }
