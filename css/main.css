@@ -101,7 +101,7 @@
   main .lg-heading {
     line-height: 0.7;
     margin-bottom: 1rem;
-    padding-top: 3rem;
+    padding-top: 1rem;
   }
   main .lg-heading #first-name {
     font-size: 7rem;
@@ -211,6 +211,7 @@ main .icons a:hover {
 }
 main#home {
   overflow: hidden;
+  align-items: center;
   text-align: center;
 }
 main#home .main-img {
