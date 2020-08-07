@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="simon.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quicksand&display=swap"
       rel="stylesheet"
     />
     <link
@@ -18,19 +18,49 @@
     <title>SIMON</title>
   </head>
   <body>
+    <!-- Placeholder for navbar -->
+
+    <nav>
+      <i id="home-icon" class="grid-item fas fa-home fa-2x"></i>
+      <h1 id="level" class="grid-item">SCORE: 1</h1>
+      <i id="info-icon" class="grid-item far fa-question-circle fa-2x"></i>
+    </nav>
+
     <div class="outer">
-      <div class="pad green"></div>
-      <div class="pad red"></div>
+      <div class="pad" id="green"></div>
+      <div class="pad" id="red"></div>
       <div class="inner">
         <button class="power-btn">
           <i class="fas fa-power-off"></i>
         </button>
-        <h1 class="game-title">SIMON</h1>
+        <p class="game-title">SIMON</p>
       </div>
-      <div class="pad yellow"></div>
-      <div class="pad blue"></div>
+      <div class="pad" id="yellow"></div>
+      <div class="pad" id="blue"></div>
       <div class="stripe horizontal"></div>
       <div class="stripe vertical"></div>
     </div>
+
+    <footer>
+      <p>MODE: CLASSIC</p>
+      <div class="radio-container">
+        <div class="radio-btn">
+          <div class="radio-check"></div>
+        </div>
+        <div class="radio-btn">
+          <!-- <div class="radio-check"></div> -->
+        </div>
+        <div class="radio-btn">
+          <!-- <div class="radio-check"></div> -->
+        </div>
+        <div class="radio-btn">
+          <!-- <div class="radio-check"></div> -->
+        </div>
+        <div class="radio-btn">
+          <!-- <div class="radio-check"></div> -->
+        </div>
+      </div>
+    </footer>
+    <script src="simon2.js"></script>
   </body>
 </html>

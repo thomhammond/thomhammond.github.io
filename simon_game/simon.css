@@ -1,48 +1,44 @@
+/* Main CSS */
 body {
   margin: 0 auto;
   background-color: #011f3f;
   font-family: "Press Start 2P", cursive;
 }
 
+nav {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  background-color: #01162c;
+  color: #c2c2c4;
+}
+nav .grid-item {
+  text-align: center;
+}
+nav i {
+  margin-top: 20px;
+}
+#level {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.5rem;
+}
+
+/* Main game board container */
 .outer {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  margin: 200px auto 0;
+  margin: 75px auto 0;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  border: solid 10px #111;
+  border: solid 10px #222;
+  box-shadow: 5px 10px 10px rgba(109, 109, 109, 0.05);
 }
 
-.pad {
-  width: 150px;
-  height: 150px;
-}
-
-.green {
-  background-color: #62cd80;
-  border-radius: 100% 0 0 0;
-}
-
-.red {
-  background-color: #dd4a43;
-  border-radius: 0 100% 0 0;
-}
-
-.yellow {
-  background-color: #e8e862;
-  border-radius: 0 0 0 100%;
-}
-
-.blue {
-  background-color: #0396e4;
-  border-radius: 0 0 100% 0;
-}
-
+/* Inner game board, logo, and power button */
 .inner {
   position: absolute;
-  top: 285px;
+  top: 230px;
   width: 125px;
   height: 125px;
   border-radius: 50%;
@@ -51,38 +47,110 @@ body {
   border: solid 10px #222;
   text-align: center;
 }
+.game-title {
+  color: #c2c2c4;
+  /* color: #dbdce0; */
+  font-size: 1.3rem;
+}
+.power-btn {
+  margin-top: 25px;
+  width: 45px;
+  padding: 2px 0;
+  background-color: #696e76;
+  color: #383836;
+  border: none;
+  outline: none;
+  border-radius: 45px;
+}
 
+/* Game pads */
+.pad {
+  width: 150px;
+  height: 150px;
+}
+#green {
+  background-color: #62cd80;
+  border-radius: 100% 0 0 0;
+}
+#red {
+  background-color: #dd4a43;
+  border-radius: 0 100% 0 0;
+}
+#yellow {
+  background-color: #e8e862;
+  border-radius: 0 0 0 100%;
+}
+#blue {
+  background-color: #0396e4;
+  border-radius: 0 0 100% 0;
+}
+
+/* CSS to create spacing between pads */
 .stripe {
   position: absolute;
   background-color: #222;
+  top: 300px;
+  width: 300px;
+  height: 10px;
   z-index: 5;
 }
-.horizontal {
-  top: 355px;
-  width: 300px;
-  height: 10px;
-}
-
 .vertical {
   transform: rotate(90deg);
-  top: 355px;
-  width: 300px;
-  height: 10px;
-}
-.game-title {
-  /* color: #dadfe7; */
-  color: #dbdce0;
-  font-size: 1.2rem;
 }
 
-.power-btn {
-  margin-top: 25px;
-  width: 40px;
-  padding: 2px 0;
-  background-color: #696e76;
-  border: none;
-  border-radius: 45px;
+/* CSS to create flash animation */
+.show {
+  opacity: 1;
+  transition: opacity 100ms;
 }
+.hide {
+  opacity: 0.5;
+  transition: opacity 100ms;
+}
+
+footer {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.5rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  background-color: #01162c;
+  color: #c2c2c4;
+  padding-bottom: 15px;
+}
+
+footer p {
+  margin: 10px;
+}
+
+.radio-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  width: 50%;
+  margin: 0 auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.radio-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #c2c2c4;
+}
+
+.radio-check {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #033163;
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+/* Media Queries */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
@@ -104,35 +172,29 @@ body {
     margin: 100px auto 0;
     border: solid 20px #111;
   }
-
   .pad {
     width: 300px;
     height: 300px;
   }
-
   .inner {
     top: 275px;
     width: 250px;
     height: 250px;
     border: solid 20px #222;
   }
-
   .horizontal {
     top: 410px; /* .outer-circle radius - height of 0.4rem */
     width: 600px;
     height: 20px;
   }
-
   .vertical {
     top: 410px;
     width: 600px;
     height: 20px;
   }
-
   .game-title {
     font-size: 2rem;
   }
-
   .power-btn {
     margin-top: 50px;
     width: 60px;
