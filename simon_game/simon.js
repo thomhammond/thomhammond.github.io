@@ -81,10 +81,6 @@ for (let i = 0; i < buttonColors.length; i++) {
   btn.addEventListener("click", function (event) {
     clickHandler(event.target.id);
   });
-  btn.addEventListener("touchstart", function (event) {
-    clickHandler(event.target.id);
-  });
 }
 
 document.addEventListener("keydown", nextSequence, { once: true });
-document.addEventListener("touchstart", nextSequence, { once: true });

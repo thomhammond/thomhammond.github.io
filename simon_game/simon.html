@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Simon</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="simon.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+
+    <title>SIMON</title>
   </head>
-
   <body>
-    <h1 id="level-title">Tap to Play</h1>
-    <div class="container">
-      <div lass="row">
-        <div type="button" id="green" class="btn green"></div>
-
-        <div type="button" id="red" class="btn red"></div>
+    <div class="outer">
+      <div class="pad green"></div>
+      <div class="pad red"></div>
+      <div class="inner">
+        <button class="power-btn">
+          <i class="fas fa-power-off"></i>
+        </button>
+        <h1 class="game-title">SIMON</h1>
       </div>
-
-      <div class="row">
-        <div type="button" id="yellow" class="btn yellow"></div>
-        <div type="button" id="blue" class="btn blue"></div>
-      </div>
+      <div class="pad yellow"></div>
+      <div class="pad blue"></div>
+      <div class="stripe horizontal"></div>
+      <div class="stripe vertical"></div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="simon.js"></script>
   </body>
 </html>

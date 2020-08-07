@@ -1,74 +1,141 @@
 body {
-  text-align: center;
+  margin: 0 auto;
   background-color: #011f3f;
-}
-
-#level-title {
   font-family: "Press Start 2P", cursive;
-  font-size: 3rem;
-  margin: 5%;
-  color: #fef2bf;
 }
 
-.container {
-  display: block;
-  width: 50%;
-  margin: auto;
+.outer {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  margin: 200px auto 0;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  border: solid 10px #111;
 }
 
-.btn {
-  margin: 7px;
-  display: inline-block;
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
-}
-
-.game-over {
-  background-color: red;
-  opacity: 0.8;
+.pad {
+  width: 150px;
+  height: 150px;
 }
 
 .green {
-  background-color: green;
-  border-top-left-radius: 200px;
-  border-top-right-radius: 20%;
-  border-bottom-right-radius: 75px;
-  border-bottom-left-radius: 20%;
+  background-color: #62cd80;
+  border-radius: 100% 0 0 0;
 }
 
 .red {
-  background-color: red;
-  border-top-left-radius: 20%;
-  border-top-right-radius: 200px;
-  border-bottom-right-radius: 20%;
-  border-bottom-left-radius: 75px;
-}
-
-.blue {
-  background-color: blue;
-  border-top-left-radius: 75px;
-  border-top-right-radius: 20%;
-  border-bottom-right-radius: 200px;
-  border-bottom-left-radius: 20%;
+  background-color: #dd4a43;
+  border-radius: 0 100% 0 0;
 }
 
 .yellow {
-  background-color: yellow;
-  border-top-left-radius: 20%;
-  border-top-right-radius: 75px;
-  border-bottom-right-radius: 20%;
-  border-bottom-left-radius: 200px;
+  background-color: #e8e862;
+  border-radius: 0 0 0 100%;
 }
 
-.pressed {
-  box-shadow: 0 0 20px white;
-  background-color: grey;
+.blue {
+  background-color: #0396e4;
+  border-radius: 0 0 100% 0;
 }
 
-@media (max-width: 1024px) {
-  .btn {
-    height: 150px;
-    width: 150px;
+.inner {
+  position: absolute;
+  top: 285px;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  z-index: 10;
+  background-color: #111;
+  border: solid 10px #222;
+  text-align: center;
+}
+
+.stripe {
+  position: absolute;
+  background-color: #222;
+  z-index: 5;
+}
+.horizontal {
+  top: 355px;
+  width: 300px;
+  height: 10px;
+}
+
+.vertical {
+  transform: rotate(90deg);
+  top: 355px;
+  width: 300px;
+  height: 10px;
+}
+.game-title {
+  /* color: #dadfe7; */
+  color: #dbdce0;
+  font-size: 1.2rem;
+}
+
+.power-btn {
+  margin-top: 25px;
+  width: 40px;
+  padding: 2px 0;
+  background-color: #696e76;
+  border: none;
+  border-radius: 45px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .outer {
+    width: 600px;
+    height: 600px;
+    margin: 100px auto 0;
+    border: solid 20px #111;
+  }
+
+  .pad {
+    width: 300px;
+    height: 300px;
+  }
+
+  .inner {
+    top: 275px;
+    width: 250px;
+    height: 250px;
+    border: solid 20px #222;
+  }
+
+  .horizontal {
+    top: 410px; /* .outer-circle radius - height of 0.4rem */
+    width: 600px;
+    height: 20px;
+  }
+
+  .vertical {
+    top: 410px;
+    width: 600px;
+    height: 20px;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .power-btn {
+    margin-top: 50px;
+    width: 60px;
+    padding: 5px 0;
   }
 }

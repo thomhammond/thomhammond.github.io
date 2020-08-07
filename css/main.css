@@ -1,3 +1,101 @@
+#main {
+  /* display: flex; */
+  display: block;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 1rem;
+  height: 100%;
+  line-height: 1.5;
+}
+
+#main-text {
+  max-width: 350px;
+  text-align: center;
+  margin: 0 auto;
+  /* margin: 0 60px; */
+}
+
+#main-img {
+  position: relative;
+  width: 275px;
+  height: 275px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#main-img img {
+  position: absolute;
+  height: 100%;
+}
+
+.icons {
+  margin-top: 1rem;
+}
+.icons a {
+  padding: 0.4rem;
+}
+.icons a:hover {
+  color: #bbb;
+  transition: all 0.5s ease-out;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #444;
+  color: #fff;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+footer {
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #bbb;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 400;
+  margin-bottom: -20px;
+  line-height: 0.5;
+}
+h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 0.5;
+}
+h3 {
+  margin: -15px 0 4rem 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 0.5;
+  color: #bbb;
+}
+h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 3rem 0 1.2rem 0;
+  padding: 0 1rem;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -31,6 +129,7 @@
   top: 0;
   width: 100%;
   visibility: hidden;
+  opacity: 1;
 }
 .menu.show {
   visibility: visible;
@@ -52,6 +151,10 @@
   list-style: none;
   transform: translate3d(100%, 0, 0);
   transition: all 0.5s ease-out;
+  font-size: 24px;
+  float: none;
+  width: 100%;
+  min-height: 0;
 }
 .menu-nav.show {
   transform: translate3d(0, 0, 0);
@@ -97,124 +200,42 @@
   transition-delay: 0.4s;
 }
 
-@media screen and (max-width: 900px) {
-  main .lg-heading {
-    line-height: 0.7;
-    margin-bottom: 1rem;
+/* Small devices (landscape phones, 576px and up) */
+/* @media (min-width: 576px) {
+  #main-text {
+    max-width: 750px;
   }
-  main .lg-heading #first-name {
-    font-size: 7rem;
+
+  h1,
+  h2 {
+    display: inline-block;
+    margin-left: 15px;
   }
-  main .lg-heading #last-name {
+  h2 {
     font-size: 5rem;
   }
-  main .lg-sub-heading {
-    margin-bottom: 3rem;
+  h3 {
+    font-size: 2.5rem;
   }
-  main .main-img {
-    margin-top: 5rem;
-    height: 300px;
-    width: 300px;
+  h4 {
+    font-size: 2rem;
   }
-  .menu {
-    opacity: 1;
+
+  #main-img {
+    margin: -30px auto -30px;
+    height: 400px;
+    width: 400px;
   }
-  ul.menu-nav {
-    float: none;
-    width: 100%;
-    min-height: 0;
-  }
-  ul.menu-nav.show {
-    transform: translate3d(0, 0, 0);
-  }
-  .menu-nav {
-    font-size: 24px;
-  }
+} */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
 }
 
-@media screen and (max-width: 500px) {
-  main .lg-heading {
-    line-height: 0.5;
-  }
-  main .lg-heading #first-name {
-    font-size: 5rem;
-  }
-  main .lg-heading #last-name {
-    font-size: 3rem;
-  }
-  main .main-img {
-    height: 275px;
-    width: 275px;
-  }
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background: #444;
-  color: #fff;
-  margin: 0;
-  height: 100%;
-  font-family: "Montserrat", sans-serif;
-  line-height: 1.5;
-}
-
-h1,
-h2,
-h3 {
-  margin: 0;
-  font-weight: 400;
-}
-h1.lg-heading,
-h2.lg-heading,
-h3.lg-heading {
-  font-size: 6rem;
-}
-h1.sm-heading,
-h2.sm-heading,
-h3.sm-heading {
-  margin: 3rem 0 1rem 0;
-  padding: 0 1rem;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-header {
-  position: fixed;
-  z-index: 2;
-  width: 100%;
-}
-
-.text-secondary {
-  color: #bbb;
-}
-
-main {
-  padding: 4rem;
-  height: 100%;
-}
-main .icons {
-  margin-top: 1rem;
-}
-main .icons a {
-  padding: 0.4rem;
-}
-main .icons a:hover {
-  color: #bbb;
-  transition: all 0.5s ease-out;
-}
-main#home {
-  overflow: hidden;
-  align-items: center;
-  text-align: center;
-}
-main#home .main-img {
-  display: block;
-  margin: 0 auto;
-  border-radius: 50%;
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }
