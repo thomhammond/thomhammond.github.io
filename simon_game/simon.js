@@ -1,86 +1,108 @@
-// variables
-var gamePattern = [];
-var userPattern = [];
-var score = 0;
-var currScore = 0;
-var buttonColors = ["red", "blue", "green", "yellow"];
+// Variables
+var simonPattern = [];
+var playerPattern = [];
+var level = 0;
+var index = 0;
+var padColors = ["red", "blue", "green", "yellow"];
 
 // logic functions
-function nextSequence() {
-  document.querySelector("body").classList.remove("game-over");
-  var randomNum = Math.floor(Math.random() * 4);
-  var randomCol = buttonColors[randomNum];
-  gamePattern.push(randomCol);
-  score += 1;
-  updateHeader();
+function updateSimonPattern() {
+  let randomNum = Math.floor(Math.random() * 4);
+  let randomColor = padColors[randomNum];
+  simonPattern.push(randomColor);
   setTimeout(() => {
-    flash(randomCol);
-  }, 500);
-  setTimeout(() => {
-    playSound(randomCol);
+    animatePad(randomColor);
+    playSound(randomColor);
   }, 500);
   return randomNum;
 }
 
-function checkAnswer(curr) {
-  if (userPattern[curr] != gamePattern[curr]) {
-    // reset game!
-    var audio = new Audio("simon_sounds/wrong.mp3");
+function checkAnswer(currentIndex) {
+  // Check for correct sequence element
+  if (playerPattern[currentIndex] != simonPattern[currentIndex]) {
+    let audio = new Audio("simon_sounds/wrong.mp3");
     audio.play();
-    gamePattern = [];
-    userPattern = [];
-    score = 0;
-    currScore = 0;
-    document.querySelector("body").classList.add("game-over");
-    document.addEventListener("keydown", nextSequence, { once: true });
-    document.addEventListener("touchstart", nextSequence, { once: true });
-    document.querySelector("h1").textContent = "Game Over!";
-    setTimeout(() => {
-      document.querySelector("h1").textContent = "Tap to Play";
-    }, 2000);
-
+    resetGame();
     return;
   }
-  if (curr == score - 1) {
-    userPattern = [];
-    currScore = 0;
+  // Check if pattern is complete
+  if (currentIndex === level) {
+    playerPattern = [];
+    index = 0;
+    level += 1;
+    updateScore();
     setTimeout(() => {
-      nextSequence();
+      updateSimonPattern();
     }, 500);
   } else {
-    currScore += 1;
+    index += 1;
   }
+}
+
+// UI handlers
+function playSound(color) {
+  let audio = new Audio("simon_sounds/" + color + ".mp3");
+  audio.play();
+}
+
+function animatePad(color) {
+  let pad = document.querySelector("#" + color);
+  pad.classList.add("hide");
+  pad.classList.remove("show");
+  setTimeout(() => {
+    pad.classList.add("show");
+    pad.classList.remove("hide");
+  }, 100);
+}
+
+function updateScore() {
+  document.querySelector("#score").textContent = "SCORE: " + level;
 }
 
 function clickHandler(color) {
-  flash(color);
+  animatePad(color);
   playSound(color);
-  userPattern.push(color);
-  checkAnswer(currScore);
+  playerPattern.push(color);
+  checkAnswer(index);
 }
 
-// animation functions
-// function flash(elem) {
-//   $("#" + elem)
-//     .fadeOut(100)
-//     .fadeIn(100);
-// }
-
-// function playSound(elem) {
-//   var audio = new Audio("simon_sounds/" + elem + ".mp3");
-//   audio.play();
-// }
-
-function updateHeader() {
-  document.querySelector("#score").textContent = "SCORE: " + score;
+function resetGame() {
+  simonPattern = [];
+  playerPattern = [];
+  level = 0;
+  index = 0;
+  // Change once trivia is added
+  document.querySelector(".power-btn").addEventListener(
+    "click",
+    function () {
+      updateSimonPattern();
+      updateScore();
+    },
+    { once: true }
+  );
+  document.querySelector("#score").textContent = "GAME OVER!";
 }
 
-// set-up
-for (let i = 0; i < buttonColors.length; i++) {
-  let btn = document.querySelector("#" + buttonColors[i]);
-  btn.addEventListener("click", function (event) {
-    clickHandler(event.target.id);
+// Set-Up and initialize
+for (let i = 0; i < padColors.length; i++) {
+  let pad = document.querySelector("#" + padColors[i]);
+  pad.addEventListener("touchstart", function (event) {
+    color = event.target.id;
+    clickHandler(color);
+    event.preventDefault();
+  });
+  pad.addEventListener("click", function (event) {
+    color = event.target.id;
+    clickHandler(color);
+    event.preventDefault();
   });
 }
 
-document.addEventListener("keydown", nextSequence, { once: true });
+document.querySelector(".power-btn").addEventListener(
+  "click",
+  function () {
+    updateSimonPattern();
+    updateScore();
+  },
+  { once: true }
+);

@@ -10,6 +10,7 @@ nav {
   grid-template-columns: 25% 50% 25%;
   background-color: #01162c;
   color: #c2c2c4;
+  height: 70px;
 }
 nav .grid-item {
   text-align: center;
@@ -91,6 +92,16 @@ nav a i {
   border-radius: 0 0 100% 0;
 }
 
+/* CSS to create flash animation */
+.show {
+  opacity: 1;
+  transition: opacity 100ms;
+}
+.hide {
+  opacity: 0.2;
+  transition: opacity 100ms;
+}
+
 /* CSS to create spacing between pads */
 .stripe {
   position: absolute;
@@ -102,16 +113,6 @@ nav a i {
 }
 .vertical {
   transform: rotate(90deg);
-}
-
-/* CSS to create flash animation */
-.show {
-  opacity: 1;
-  transition: opacity 100ms;
-}
-.hide {
-  opacity: 0.5;
-  transition: opacity 100ms;
 }
 
 footer {
