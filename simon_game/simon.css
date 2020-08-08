@@ -17,9 +17,10 @@ nav .grid-item {
 nav i {
   margin-top: 20px;
 }
-#level {
+#score {
   font-family: "Quicksand", sans-serif;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 /* Main game board container */
@@ -27,7 +28,7 @@ nav i {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  margin: 75px auto 0;
+  margin: 100px auto 0;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
@@ -38,7 +39,7 @@ nav i {
 /* Inner game board, logo, and power button */
 .inner {
   position: absolute;
-  top: 230px;
+  top: 255px;
   width: 125px;
   height: 125px;
   border-radius: 50%;
@@ -47,20 +48,21 @@ nav i {
   border: solid 10px #222;
   text-align: center;
 }
-.game-title {
-  color: #c2c2c4;
-  /* color: #dbdce0; */
-  font-size: 1.3rem;
-}
 .power-btn {
-  margin-top: 25px;
-  width: 45px;
-  padding: 2px 0;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 50px;
+  padding: 3px 0;
   background-color: #696e76;
   color: #383836;
   border: none;
   outline: none;
   border-radius: 45px;
+}
+.game-title {
+  margin-top: 15px;
+  color: #c2c2c4;
+  font-size: 1.3rem;
 }
 
 /* Game pads */
@@ -89,7 +91,7 @@ nav i {
 .stripe {
   position: absolute;
   background-color: #222;
-  top: 300px;
+  top: 325px;
   width: 300px;
   height: 10px;
   z-index: 5;

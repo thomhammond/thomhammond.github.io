@@ -1,8 +1,8 @@
 // variables
 var gamePattern = [];
 var userPattern = [];
-var level = 0;
-var currLevel = 0;
+var score = 0;
+var currScore = 0;
 var buttonColors = ["red", "blue", "green", "yellow"];
 
 // logic functions
@@ -11,7 +11,7 @@ function nextSequence() {
   var randomNum = Math.floor(Math.random() * 4);
   var randomCol = buttonColors[randomNum];
   gamePattern.push(randomCol);
-  level += 1;
+  score += 1;
   updateHeader();
   setTimeout(() => {
     flash(randomCol);
@@ -29,8 +29,8 @@ function checkAnswer(curr) {
     audio.play();
     gamePattern = [];
     userPattern = [];
-    level = 0;
-    currLevel = 0;
+    score = 0;
+    currScore = 0;
     document.querySelector("body").classList.add("game-over");
     document.addEventListener("keydown", nextSequence, { once: true });
     document.addEventListener("touchstart", nextSequence, { once: true });
@@ -41,14 +41,14 @@ function checkAnswer(curr) {
 
     return;
   }
-  if (curr == level - 1) {
+  if (curr == score - 1) {
     userPattern = [];
-    currLevel = 0;
+    currScore = 0;
     setTimeout(() => {
       nextSequence();
     }, 500);
   } else {
-    currLevel += 1;
+    currScore += 1;
   }
 }
 
@@ -56,23 +56,23 @@ function clickHandler(color) {
   flash(color);
   playSound(color);
   userPattern.push(color);
-  checkAnswer(currLevel);
+  checkAnswer(currScore);
 }
 
 // animation functions
-function flash(elem) {
-  $("#" + elem)
-    .fadeOut(100)
-    .fadeIn(100);
-}
+// function flash(elem) {
+//   $("#" + elem)
+//     .fadeOut(100)
+//     .fadeIn(100);
+// }
 
-function playSound(elem) {
-  var audio = new Audio("simon_sounds/" + elem + ".mp3");
-  audio.play();
-}
+// function playSound(elem) {
+//   var audio = new Audio("simon_sounds/" + elem + ".mp3");
+//   audio.play();
+// }
 
 function updateHeader() {
-  document.querySelector("h1").textContent = "Level " + level;
+  document.querySelector("#score").textContent = "SCORE: " + score;
 }
 
 // set-up
