@@ -22,6 +22,7 @@ function checkAnswer(currentIndex) {
   if (playerPattern[currentIndex] != simonPattern[currentIndex]) {
     let audio = new Audio("simon_sounds/wrong.mp3");
     audio.play();
+    gameOver();
     resetGame();
     return;
   }
@@ -66,21 +67,31 @@ function clickHandler(color) {
   checkAnswer(index);
 }
 
-function resetGame() {
-  simonPattern = [];
-  playerPattern = [];
-  level = 0;
-  index = 0;
-  // Change once trivia is added
-  document.querySelector(".power-btn").addEventListener(
+function gameOver() {
+  let gameBoard = document.querySelector(".outer");
+  let triviaMenu = document.querySelector(".trivia");
+  let finalScore = document.querySelector("#final-score");
+  finalScore.textContent = "SCORE: " + level;
+  gameBoard.classList.add("invisible");
+  triviaMenu.classList.remove("invisible");
+  document.querySelector("#score").textContent = "GAME OVER";
+  document.querySelector(".play-again").addEventListener(
     "click",
     function () {
+      gameBoard.classList.remove("invisible");
+      triviaMenu.classList.add("invisible");
       updateSimonPattern();
       updateScore();
     },
     { once: true }
   );
-  document.querySelector("#score").textContent = "GAME OVER!";
+}
+
+function resetGame() {
+  simonPattern = [];
+  playerPattern = [];
+  level = 0;
+  index = 0;
 }
 
 // Set-Up and initialize

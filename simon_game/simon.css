@@ -39,6 +39,7 @@ nav a i {
   justify-content: center;
   border: solid 10px #222;
   box-shadow: 5px 10px 10px rgba(109, 109, 109, 0.05);
+  /* visibility: hidden; */
 }
 
 /* Inner game board, logo, and power button */
@@ -70,6 +71,37 @@ nav a i {
   font-size: 1.3rem;
 }
 
+.trivia {
+  color: #c2c2c4;
+  font-family: "Quicksand", sans-serif;
+  position: absolute;
+  margin: 15px;
+  font-size: 1.5rem;
+  /* visibility: hidden; */
+}
+
+#final-score {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Press Start 2P", cursive;
+}
+.play-again-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-again {
+  cursor: pointer;
+  width: 80%;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #62cd80;
+}
+
 /* Game pads */
 .pad {
   width: 150px;
@@ -98,8 +130,12 @@ nav a i {
   transition: opacity 100ms;
 }
 .hide {
-  opacity: 0.2;
+  opacity: 0;
   transition: opacity 100ms;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 /* CSS to create spacing between pads */

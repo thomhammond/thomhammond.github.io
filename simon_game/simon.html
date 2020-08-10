@@ -14,7 +14,6 @@
       integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
       crossorigin="anonymous"
     />
-
     <title>SIMON</title>
   </head>
   <body>
@@ -26,6 +25,19 @@
       <i id="info-icon" class="grid-item far fa-question-circle fa-2x"></i>
     </nav>
 
+    <!-- Trivia overlay -->
+    <div class="trivia invisible">
+      <p id="final-score"></p>
+      <p>
+        SIMON is an electronic game of memory skill invented by Ralph H. Baer in
+        1978.
+      </p>
+      <div class="play-again-wrapper">
+        <button class="play-again">Play Again?</button>
+      </div>
+    </div>
+
+    <!-- SIMON game pad -->
     <div class="outer">
       <div class="pad" id="green"></div>
       <div class="pad" id="red"></div>
