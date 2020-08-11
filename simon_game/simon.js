@@ -10,10 +10,12 @@ function updateSimonPattern() {
   let randomNum = Math.floor(Math.random() * 4);
   let randomColor = padColors[randomNum];
   simonPattern.push(randomColor);
-  setTimeout(() => {
-    animatePad(randomColor);
-    playSound(randomColor);
-  }, 500);
+  playPattern();
+  // SINGLE MODE
+  // setTimeout(() => {
+  //   animatePad(randomColor);
+  //   playSound(randomColor);
+  // }, 500);
   return randomNum;
 }
 
@@ -38,6 +40,20 @@ function checkAnswer(currentIndex) {
   } else {
     index += 1;
   }
+}
+
+function playPattern() {
+  var i = 0;
+  var len = simonPattern.length;
+  setInterval(function () {
+    if (i < len) {
+      animatePad(simonPattern[i]);
+      playSound(simonPattern[i]);
+      i++;
+    } else {
+      return;
+    }
+  }, 500);
 }
 
 // UI handlers
