@@ -4,18 +4,21 @@ var playerPattern = [];
 var level = 0;
 var index = 0;
 var padColors = ["red", "blue", "green", "yellow"];
+var gameModes = [
+  "classic-click",
+  "single-click",
+  "grayscale-click",
+  "reverse-click",
+  "creator-click",
+];
+var currentMode = "classic";
 
 // logic functions
 function updateSimonPattern() {
   let randomNum = Math.floor(Math.random() * 4);
   let randomColor = padColors[randomNum];
   simonPattern.push(randomColor);
-  playPattern();
-  // SINGLE MODE
-  // setTimeout(() => {
-  //   animatePad(randomColor);
-  //   playSound(randomColor);
-  // }, 500);
+  playPattern(randomColor);
   return randomNum;
 }
 
@@ -42,18 +45,30 @@ function checkAnswer(currentIndex) {
   }
 }
 
-function playPattern() {
-  var i = 0;
-  var len = simonPattern.length;
-  setInterval(function () {
-    if (i < len) {
-      animatePad(simonPattern[i]);
-      playSound(simonPattern[i]);
-      i++;
-    } else {
-      return;
-    }
-  }, 500);
+function playPattern(randomColor) {
+  switch (currentMode) {
+    case "classic":
+      var i = 0;
+      var len = simonPattern.length;
+      setInterval(function () {
+        if (i < len) {
+          animatePad(simonPattern[i]);
+          playSound(simonPattern[i]);
+          i++;
+        } else {
+          return;
+        }
+      }, 500);
+      break;
+    case "single":
+      setTimeout(() => {
+        animatePad(randomColor);
+        playSound(randomColor);
+      }, 500);
+      break;
+    default:
+      break;
+  }
 }
 
 // UI handlers
@@ -110,6 +125,29 @@ function resetGame() {
   index = 0;
 }
 
+function setGameMode(mode) {
+  document.getElementById("mode-title").textContent = mode.toUpperCase();
+  currentMode = mode;
+  mode = mode + "-click";
+  document.querySelector(".power-btn").addEventListener(
+    "click",
+    function () {
+      updateSimonPattern();
+      // updateScore();
+    },
+    { once: true }
+  );
+  resetGame();
+  updateScore();
+  for (let i = 0; i < gameModes.length; i++) {
+    if (gameModes[i] != mode) {
+      document.getElementById(gameModes[i]).classList.add("invisible");
+    } else {
+      document.getElementById(gameModes[i]).classList.remove("invisible");
+    }
+  }
+}
+
 // Set-Up and initialize
 for (let i = 0; i < padColors.length; i++) {
   let pad = document.querySelector("#" + padColors[i]);
@@ -133,3 +171,16 @@ document.querySelector(".power-btn").addEventListener(
   },
   { once: true }
 );
+
+var radioButtons = document.getElementsByClassName("radio-btn");
+
+for (let i = 0; i < radioButtons.length; i++) {
+  radioButtons[i].addEventListener("touchstart", function (event) {
+    setGameMode(event.target.id);
+    event.preventDefault();
+  });
+  radioButtons[i].addEventListener("click", function (event) {
+    setGameMode(event.target.id);
+    event.preventDefault();
+  });
+}
