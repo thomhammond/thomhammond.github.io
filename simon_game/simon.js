@@ -7,7 +7,7 @@ var padColors = ["red", "blue", "green", "yellow"];
 var gameModes = [
   "classic-click",
   "single-click",
-  "grayscale-click",
+  "graymode-click",
   "reverse-click",
   "creator-click",
 ];
@@ -17,7 +17,11 @@ var currentMode = "classic";
 function updateSimonPattern() {
   let randomNum = Math.floor(Math.random() * 4);
   let randomColor = padColors[randomNum];
-  simonPattern.push(randomColor);
+  if (currentMode !== "reverse") {
+    simonPattern.push(randomColor);
+  } else {
+    simonPattern.unshift(randomColor);
+  }
   playPattern(randomColor);
   return randomNum;
 }
@@ -47,7 +51,25 @@ function checkAnswer(currentIndex) {
 
 function playPattern(randomColor) {
   switch (currentMode) {
-    case "classic":
+    case "single":
+      setTimeout(() => {
+        animatePad(randomColor);
+        playSound(randomColor);
+      }, 500);
+      break;
+    case "reverse":
+      var i = simonPattern.length - 1;
+      setInterval(function () {
+        if (i >= 0) {
+          animatePad(simonPattern[i]);
+          playSound(simonPattern[i]);
+          i--;
+        } else {
+          return;
+        }
+      }, 500);
+      break;
+    default:
       var i = 0;
       var len = simonPattern.length;
       setInterval(function () {
@@ -59,14 +81,6 @@ function playPattern(randomColor) {
           return;
         }
       }, 500);
-      break;
-    case "single":
-      setTimeout(() => {
-        animatePad(randomColor);
-        playSound(randomColor);
-      }, 500);
-      break;
-    default:
       break;
   }
 }
@@ -104,6 +118,7 @@ function gameOver() {
   let finalScore = document.querySelector("#final-score");
   finalScore.textContent = "SCORE: " + level;
   gameBoard.classList.add("invisible");
+  setTriviaText();
   triviaMenu.classList.remove("invisible");
   document.querySelector("#score").textContent = "GAME OVER";
   document.querySelector(".play-again").addEventListener(
@@ -126,19 +141,12 @@ function resetGame() {
 }
 
 function setGameMode(mode) {
+  resetGame();
   document.getElementById("mode-title").textContent = mode.toUpperCase();
   currentMode = mode;
+  console.log(currentMode);
   mode = mode + "-click";
-  document.querySelector(".power-btn").addEventListener(
-    "click",
-    function () {
-      updateSimonPattern();
-      // updateScore();
-    },
-    { once: true }
-  );
-  resetGame();
-  updateScore();
+  document.querySelector("#score").textContent = "THINK FAST!";
   for (let i = 0; i < gameModes.length; i++) {
     if (gameModes[i] != mode) {
       document.getElementById(gameModes[i]).classList.add("invisible");
@@ -146,9 +154,33 @@ function setGameMode(mode) {
       document.getElementById(gameModes[i]).classList.remove("invisible");
     }
   }
+  if (currentMode === "graymode") {
+    setGrayMode(true);
+  } else {
+    setGrayMode(false);
+  }
 }
 
-// Set-Up and initialize
+function setTriviaText() {
+  let randomNum = Math.floor(Math.random() * triviaText.length);
+  document.getElementById("trivia-text").textContent = triviaText[randomNum];
+}
+
+function setGrayMode(on) {
+  if (on) {
+    for (let i = 0; i < padColors.length; i++) {
+      let pad = document.querySelector("#" + padColors[i]);
+      pad.classList.add("gray");
+    }
+  } else {
+    for (let i = 0; i < padColors.length; i++) {
+      let pad = document.querySelector("#" + padColors[i]);
+      pad.classList.remove("gray");
+    }
+  }
+}
+
+// Set-Up and initialization
 for (let i = 0; i < padColors.length; i++) {
   let pad = document.querySelector("#" + padColors[i]);
   pad.addEventListener("touchstart", function (event) {
@@ -163,14 +195,13 @@ for (let i = 0; i < padColors.length; i++) {
   });
 }
 
-document.querySelector(".power-btn").addEventListener(
-  "click",
-  function () {
+document
+  .querySelector(".power-btn, .inner")
+  .addEventListener("click", function () {
+    resetGame();
     updateSimonPattern();
     updateScore();
-  },
-  { once: true }
-);
+  });
 
 var radioButtons = document.getElementsByClassName("radio-btn");
 
@@ -184,3 +215,11 @@ for (let i = 0; i < radioButtons.length; i++) {
     event.preventDefault();
   });
 }
+
+const triviaText = [
+  "SIMON is an electronic game of memory skill invented by Ralph H. Baer and Howard J. Morrison and released by the American board game company Milton Bradley in 1978.",
+  "Simon debuted in 1978 at a retail price of $24.95 (equivalent to $98 in 2020) and became one of the top-selling toys that Christmas.",
+  "The creators of SIMON were originally inspired by Atari's arcade game TOUCH ME which they felt had 'nice gameplay' but 'terrible exectution'",
+  "The SIMON prototype used the low cost Texas Instruments TMS 1000 microcontroller chip, which was used in many popular games of the 1970s",
+  "SIMON's tones were designed to always be harmonic, no matter the sequence, and consisted of an A major triad in second inversion, resembling a trumpet fanfare",
+];

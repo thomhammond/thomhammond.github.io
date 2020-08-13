@@ -29,10 +29,14 @@
     <!-- Trivia overlay -->
     <div class="trivia invisible">
       <p id="final-score"></p>
-      <p>
-        SIMON is an electronic game of memory skill invented by Ralph H. Baer in
-        1978.
-      </p>
+      <!-- Twitter button, needs work -->
+      <!-- <a
+        href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+        class="twitter-share-button"
+        data-show-count="false"
+        >Tweet</a
+      > -->
+      <p id="trivia-text"></p>
       <div class="play-again-wrapper">
         <button class="play-again">Play Again?</button>
       </div>
@@ -40,16 +44,16 @@
 
     <!-- SIMON game pad -->
     <div class="outer">
-      <div class="pad" id="green"></div>
-      <div class="pad" id="red"></div>
+      <div class="pad green" id="green"></div>
+      <div class="pad red" id="red"></div>
       <div class="inner">
         <button class="power-btn">
           <i class="fas fa-power-off"></i>
         </button>
         <p class="game-title">SIMON</p>
       </div>
-      <div class="pad" id="yellow"></div>
-      <div class="pad" id="blue"></div>
+      <div class="pad yellow" id="yellow"></div>
+      <div class="pad blue" id="blue"></div>
       <div class="stripe horizontal"></div>
       <div class="stripe vertical"></div>
     </div>
@@ -66,8 +70,8 @@
         <div id="reverse" class="radio-btn">
           <div id="reverse-click" class="radio-check invisible"></div>
         </div>
-        <div id="grayscale" class="radio-btn">
-          <div id="grayscale-click" class="radio-check invisible"></div>
+        <div id="graymode" class="radio-btn">
+          <div id="graymode-click" class="radio-check invisible"></div>
         </div>
         <div id="creator" class="radio-btn">
           <div id="creator-click" class="radio-check invisible"></div>
@@ -75,5 +79,10 @@
       </div>
     </footer>
     <script src="simon.js"></script>
+    <script
+      async
+      src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"
+    ></script>
   </body>
 </html>

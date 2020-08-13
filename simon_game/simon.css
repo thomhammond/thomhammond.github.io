@@ -107,21 +107,24 @@ nav a i {
   width: 150px;
   height: 150px;
 }
-#green {
+.green {
   background-color: #62cd80;
   border-radius: 100% 0 0 0;
 }
-#red {
+.red {
   background-color: #dd4a43;
   border-radius: 0 100% 0 0;
 }
-#yellow {
+.yellow {
   background-color: #e8e862;
   border-radius: 0 0 0 100%;
 }
-#blue {
+.blue {
   background-color: #0396e4;
   border-radius: 0 0 100% 0;
+}
+.gray {
+  background-color: #696e76;
 }
 
 /* CSS to create flash animation */
